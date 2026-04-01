@@ -1,0 +1,29 @@
+<section class="composer">
+  <h2>Create New Todo</h2>
+  <form action="/add-todo" method="POST">
+    <div class="composer-grid">
+      <input type="text" name="title" placeholder="What needs to happen?" required>
+      <input type="date" name="dueDate">
+      <input type="text" name="tags" placeholder="tags: school, backend, urgent">
+    </div>
+
+    <textarea name="description" placeholder="Drop context, links, notes..."></textarea>
+
+    <div class="priority-switcher" role="radiogroup" aria-label="Priority">
+      <div class="priority-option low">
+        <input id="new-priority-low" type="radio" name="priority" value="low">
+        <label for="new-priority-low">Low</label>
+      </div>
+      <div class="priority-option normal">
+        <input id="new-priority-normal" type="radio" name="priority" value="normal" checked>
+        <label for="new-priority-normal">Normal</label>
+      </div>
+      <div class="priority-option high">
+        <input id="new-priority-high" type="radio" name="priority" value="high">
+        <label for="new-priority-high">High</label>
+      </div>
+    </div>
+
+    <button type="submit">Add Todo</button>
+  </form>
+</section>

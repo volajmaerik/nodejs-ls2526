@@ -1,0 +1,55 @@
+<article class="todo-card <%= todo.completed ? "done" : "" %>">
+  <div class="todo-top">
+    <% if (!todo.archived) { %>
+      <input
+        class="todo-checkbox"
+        type="checkbox"
+        <%= todo.completed ? "checked" : "" %>
+        data-id="<%= todo.id %>"
+        data-from="<%= listPath %>"
+        aria-label="Toggle complete"
+      >
+    <% } %>
+
+    <div>
+      <a href="/todo/<%= todo.id %>" class="todo-title"><%= todo.title %></a>
+      <% if (todo.description) { %>
+        <p class="todo-description"><%= todo.description %></p>
+      <% } %>
+    </div>
+
+    <div class="todo-actions todo-actions-inline">
+      <% if (todo.archived) { %>
+        <a href="/archive-todo/<%= todo.id %>?archive=0&returnTo=<%= encodeURIComponent(listPath) %>">Restore</a>
+      <% } else { %>
+        <a href="/archive-todo/<%= todo.id %>?archive=1&returnTo=<%= encodeURIComponent(listPath) %>">Archive</a>
+      <% } %>
+      <a class="delete" href="/delete-todo/<%= todo.id %>?returnTo=<%= encodeURIComponent(listPath) %>">Delete</a>
+    </div>
+  </div>
+
+  <div class="todo-badges">
+    <span class="badge priority-<%= todo.priority || "normal" %>"><%= todo.priority || "normal" %></span>
+
+    <% if (todo.archived) { %>
+      <span class="badge archived">archived</span>
+    <% } %>
+
+    <% if (todo.dueAt) { %>
+      <span class="badge <%= todo.isOverdue ? "overdue" : "due" %>">
+        <%= todo.isOverdue ? "overdue" : "due" %>: <%= new Date(todo.dueAt * 1000).toLocaleDateString() %>
+      </span>
+    <% } %>
+
+    <% (todo.tagsArray || []).forEach((tag) => { %>
+      <span class="tag">#<%= tag %></span>
+    <% }) %>
+  </div>
+
+  <div class="todo-bottom">
+    <p class="todo-meta">
+      Updated <%= todo.updatedAt ? new Date(todo.updatedAt * 1000).toLocaleString() : "unknown" %>
+      • Created <%= todo.createdAt ? new Date(todo.createdAt * 1000).toLocaleDateString() : "unknown" %>
+    </p>
+  </div>
+</article>

@@ -1,0 +1,34 @@
+<section class="controls">
+  <form action="/" method="GET">
+    <input class="field" type="search" name="q" value="<%= filters.q %>" placeholder="Search by title, description, tag...">
+
+    <select name="view">
+      <option value="active" <%= filters.view === "active" ? "selected" : "" %>>Active</option>
+      <option value="all" <%= filters.view === "all" ? "selected" : "" %>>All</option>
+      <option value="archived" <%= filters.view === "archived" ? "selected" : "" %>>Archived</option>
+    </select>
+
+    <select name="state">
+      <option value="all" <%= filters.state === "all" ? "selected" : "" %>>Any status</option>
+      <option value="open" <%= filters.state === "open" ? "selected" : "" %>>Open only</option>
+      <option value="done" <%= filters.state === "done" ? "selected" : "" %>>Done only</option>
+    </select>
+
+    <select name="priority">
+      <option value="all" <%= filters.priority === "all" ? "selected" : "" %>>Any priority</option>
+      <option value="high" <%= filters.priority === "high" ? "selected" : "" %>>High</option>
+      <option value="normal" <%= filters.priority === "normal" ? "selected" : "" %>>Normal</option>
+      <option value="low" <%= filters.priority === "low" ? "selected" : "" %>>Low</option>
+    </select>
+
+    <select name="sort">
+      <option value="updated" <%= filters.sort === "updated" ? "selected" : "" %>>Sort: Updated</option>
+      <option value="priority" <%= filters.sort === "priority" ? "selected" : "" %>>Sort: Priority</option>
+      <option value="due" <%= filters.sort === "due" ? "selected" : "" %>>Sort: Due date</option>
+      <option value="title" <%= filters.sort === "title" ? "selected" : "" %>>Sort: Title</option>
+      <option value="created" <%= filters.sort === "created" ? "selected" : "" %>>Sort: Created</option>
+    </select>
+
+    <button type="submit">Apply</button>
+  </form>
+</section>

@@ -1,0 +1,20 @@
+<div class="badges">
+  <span id="status-badge" class="badge status <%= todo.completed ? "done" : "pending" %>">
+    <%= todo.completed ? "Done" : "Pending" %>
+  </span>
+  <span id="priority-badge" class="badge priority-<%= todo.priority || "normal" %>"><%= todo.priority || "normal" %></span>
+
+  <% if (todo.archived) { %>
+    <span id="archived-badge" class="badge archived-badge">Archived</span>
+  <% } else { %>
+    <span id="archived-badge" class="badge archived-badge" style="display:none;">Archived</span>
+  <% } %>
+
+  <% if (todo.dueAt) { %>
+    <span id="due-badge" class="badge <%= todo.isOverdue ? "overdue-badge" : "due-badge" %>">
+      <%= todo.isOverdue ? "Overdue" : "Due" %>: <%= new Date(todo.dueAt * 1000).toLocaleDateString() %>
+    </span>
+  <% } else { %>
+    <span id="due-badge" class="badge due-badge" style="display:none;"></span>
+  <% } %>
+</div>
