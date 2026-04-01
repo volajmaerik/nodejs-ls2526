@@ -1,0 +1,46 @@
+<form action="/edit-todo/<%= todo.id %>" method="POST" class="edit-form">
+  <div class="field">
+    <label for="todo-title">Title</label>
+    <input id="todo-title" name="title" type="text" value="<%= todo.title %>" required>
+  </div>
+
+  <div class="field">
+    <label for="todo-description">Description</label>
+    <textarea id="todo-description" name="description" placeholder="Write context, steps, links..."><%= todo.description || "" %></textarea>
+  </div>
+
+  <div class="field">
+    <label for="todo-tags">Tags (comma separated)</label>
+    <input id="todo-tags" name="tags" type="text" value="<%= todo.tags || "" %>" placeholder="frontend, school, exam">
+  </div>
+
+  <div class="field">
+    <label for="todo-due-date">Due Date</label>
+    <input id="todo-due-date" name="dueDate" type="date" value="<%= todo.dueDateInput || "" %>">
+  </div>
+
+  <div class="field">
+    <label>Priority</label>
+    <div class="priority-switcher" role="radiogroup" aria-label="Priority">
+      <div class="priority-option low">
+        <input id="priority-low" type="radio" name="priority" value="low" <%= todo.priority === "low" ? "checked" : "" %>>
+        <label for="priority-low">Low</label>
+      </div>
+      <div class="priority-option normal">
+        <input id="priority-normal" type="radio" name="priority" value="normal" <%= (todo.priority || "normal") === "normal" ? "checked" : "" %>>
+        <label for="priority-normal">Normal</label>
+      </div>
+      <div class="priority-option high">
+        <input id="priority-high" type="radio" name="priority" value="high" <%= todo.priority === "high" ? "checked" : "" %>>
+        <label for="priority-high">High</label>
+      </div>
+    </div>
+  </div>
+
+  <label class="archive-toggle" for="todo-archived">
+    <input id="todo-archived" name="archived" type="checkbox" value="1" <%= todo.archived ? "checked" : "" %>>
+    Archive this todo (hide from default list)
+  </label>
+
+  <p id="autosave-status" class="autosave">Auto-save enabled. Edit any field and move focus.</p>
+</form>

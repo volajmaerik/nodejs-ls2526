@@ -1,0 +1,30 @@
+<div class="meta-grid">
+  <div class="meta-item">
+    <span>ID</span>
+    <strong><%= todo.id %></strong>
+  </div>
+  <div class="meta-item">
+    <span>Created</span>
+    <strong><%= todo.createdAt ? new Date(todo.createdAt * 1000).toLocaleString() : "Unknown" %></strong>
+  </div>
+  <div class="meta-item">
+    <span>Updated</span>
+    <strong id="todo-updated-at"><%= todo.updatedAt ? new Date(todo.updatedAt * 1000).toLocaleString() : "Unknown" %></strong>
+  </div>
+  <div class="meta-item">
+    <span>Due Date</span>
+    <strong id="todo-due-view"><%= todo.dueAt ? new Date(todo.dueAt * 1000).toLocaleDateString() : "Not set" %></strong>
+  </div>
+  <div class="meta-item" style="grid-column: 1 / -1;">
+    <span>Tags</span>
+    <div id="todo-tags-view" class="tag-list">
+      <% if ((todo.tagsArray || []).length === 0) { %>
+        <span class="tag">no tags</span>
+      <% } else { %>
+        <% (todo.tagsArray || []).forEach((tag) => { %>
+          <span class="tag">#<%= tag %></span>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+</div>

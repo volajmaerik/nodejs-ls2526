@@ -1,0 +1,11 @@
+<section class="todo-list">
+  <h2>Todo Board</h2>
+
+  <% if (todos.length === 0) { %>
+    <p class="empty">Nothing matched your filters. Try different search/sort settings or add a new todo.</p>
+  <% } %>
+
+  <% todos.forEach((todo) => { %>
+    <%- include("./todo-card.html", { todo, listPath }) %>
+  <% }) %>
+</section>

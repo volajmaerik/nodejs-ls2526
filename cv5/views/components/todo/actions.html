@@ -1,0 +1,9 @@
+<div class="actions">
+  <a href="/toggle-todo/<%= todo.id %>?from=<%= encodeURIComponent(`/todo/${todo.id}`) %>"><%= todo.completed ? "Mark Pending" : "Mark Done" %></a>
+  <% if (todo.archived) { %>
+    <a href="/archive-todo/<%= todo.id %>?archive=0&returnTo=<%= encodeURIComponent(`/todo/${todo.id}`) %>">Restore</a>
+  <% } else { %>
+    <a href="/archive-todo/<%= todo.id %>?archive=1&returnTo=<%= encodeURIComponent(`/todo/${todo.id}`) %>">Archive</a>
+  <% } %>
+  <a class="delete" href="/delete-todo/<%= todo.id %>?returnTo=%2F">Delete</a>
+</div>
